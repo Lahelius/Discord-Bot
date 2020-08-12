@@ -22,7 +22,8 @@ module.exports = {
         connection: null,
         songs: [],
         volume: 5,
-        playing: true
+        playing: true,
+        loop: 'off'
       }
       queue.set(message.guild.id, queueConstruct)
       queueConstruct.songs.push(song)
@@ -55,7 +56,9 @@ function playSong(guild, song, queue){
   const dispatcher = serverQueue.connection.play(ytdl(song.url))
   
   .on('finish', () => {
-    serverQueue.songs.shift()
+    if(serverQueue.loop !== 'track'){
+      serverQueue.songs.shift()
+    }
     playSong(guild, serverQueue.songs[0], queue)
   })
   .on('error', error =>{

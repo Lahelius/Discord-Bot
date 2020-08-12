@@ -38,6 +38,8 @@ client.on('message', async message => {
     client.commands.get('current').execute(message, args, queue)
   }else if (message.content.startsWith(`${PREFIX}volume`)){
     client.commands.get('volume').execute(message, args, queue)
+  }else if (message.content.startsWith(`${PREFIX}loop`)){
+    client.commands.get('loop').execute(message, args, queue)
   }
 
 })
