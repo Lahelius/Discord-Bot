@@ -42,6 +42,8 @@ client.on('message', async message => {
     client.commands.get('loop').execute(message, args, queue)
   }else if (message.content.startsWith(`${PREFIX}clear`)){
     client.commands.get('clear').execute(message, queue)
+  }else if (message.content.startsWith(`${PREFIX}queue`)){
+    client.commands.get('queue').execute(message, queue)
   }
 })
 

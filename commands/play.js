@@ -31,7 +31,7 @@ module.exports = {
       try{
         var connection = await voiceChannel.join()
         queueConstruct.connection = connection
-        playSong(message.guild, queueConstruct.songs[0], queue)
+        playSong(message, queueConstruct.songs[0], queue)
       } catch(error){
         console.log(`There was an error connecting to the voice channel: ${error}`)
         return message.channel.send(`There was an error connecting to the voice channel: ${error}`)
@@ -44,17 +44,17 @@ module.exports = {
 }
 
 
-function playSong(guild, song, queue){
-  const serverQueue = queue.get(guild.id)
+function playSong(message, song, queue){
+  const serverQueue = queue.get(message.guild.id)
   
   if(!song){
     serverQueue.voiceChannel.leave()
-    queue.delete(guild.id)
+    queue.delete(message.guild.id)
     return
   }
 
+  message.channel.send(`Now Playing: ${song.title}`)
   const dispatcher = serverQueue.connection.play(ytdl(song.url))
-  
   .on('finish', () => {
     if(serverQueue.loop === 'queue'){
       serverQueue.songs.push(serverQueue.songs[0])
@@ -62,7 +62,8 @@ function playSong(guild, song, queue){
     if(serverQueue.loop !== 'track'){
       serverQueue.songs.shift()
     }
-    playSong(guild, serverQueue.songs[0], queue)
+    playSong(message, serverQueue.songs[0], queue)
+    
   })
   .on('error', error =>{
     console.log(error)
