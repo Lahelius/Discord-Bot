@@ -30,6 +30,10 @@ client.on('message', async message => {
     client.commands.get('join').execute(message, args)
   } else if (message.content.startsWith(`${PREFIX}skip`)){
     client.commands.get('skip').execute(message, args, queue)
+  }else if (message.content.startsWith(`${PREFIX}pause`)){
+    client.commands.get('pause').execute(message, args, queue)
+  }else if (message.content.startsWith(`${PREFIX}resume`)){
+    client.commands.get('resume').execute(message, args, queue)
   }
 
 })
