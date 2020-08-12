@@ -1,10 +1,8 @@
 const Discord = require('discord.js')
 const fs = require('fs')
-const {prefix, token} =nrequire(".config/json")
+const {PREFIX, token} = require('./config.json')
 const client = new Discord.Client()
 const ytdl =  require('ytdl-core')
-bot.commands = new Discord.Collection();
-//const PREFIX = '!'
 
 client.commands = new Discord.Collection()
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
