@@ -34,6 +34,8 @@ client.on('message', async message => {
     client.commands.get('pause').execute(message, args, queue)
   }else if (message.content.startsWith(`${PREFIX}resume`)){
     client.commands.get('resume').execute(message, args, queue)
+  }else if (message.content.startsWith(`${PREFIX}current`)){
+    client.commands.get('current').execute(message, args, queue)
   }
 
 })
