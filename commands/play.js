@@ -56,6 +56,9 @@ function playSong(guild, song, queue){
   const dispatcher = serverQueue.connection.play(ytdl(song.url))
   
   .on('finish', () => {
+    if(serverQueue.loop === 'queue'){
+      serverQueue.songs.push(serverQueue.songs[0])
+    }
     if(serverQueue.loop !== 'track'){
       serverQueue.songs.shift()
     }
@@ -65,5 +68,4 @@ function playSong(guild, song, queue){
     console.log(error)
   })
   dispatcher.setVolumeLogarithmic(serverQueue.volume/5)
-
 }
