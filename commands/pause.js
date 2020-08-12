@@ -1,6 +1,3 @@
-const { execute } = require("./play");
-const { Message } = require("discord.js");
-
 module.exports = {
     name: 'pause',
     description : 'Pauses the currently playing track',

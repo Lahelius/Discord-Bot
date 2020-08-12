@@ -1,5 +1,3 @@
-const { execute } = require("./play");
-
 module.exports = {
     name: 'skip',
     description: 'Skips the song that is currently playing',

@@ -1,5 +1,3 @@
-const { execute } = require("./resume");
-
 module.exports = {
     name: 'queue',
     description: 'Displays the contents of the queue',
