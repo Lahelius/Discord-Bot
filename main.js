@@ -28,6 +28,8 @@ client.on('message', async message => {
     client.commands.get('leave').execute(message, args)
   } else if (message.content.startsWith(`${PREFIX}join`)) {
     client.commands.get('join').execute(message, args)
+  } else if (message.content.startsWith(`${PREFIX}skip`)){
+    client.commands.get('skip').execute(message, args, queue)
   }
 
 })
