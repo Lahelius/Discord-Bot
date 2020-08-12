@@ -36,6 +36,8 @@ client.on('message', async message => {
     client.commands.get('resume').execute(message, args, queue)
   }else if (message.content.startsWith(`${PREFIX}current`)){
     client.commands.get('current').execute(message, args, queue)
+  }else if (message.content.startsWith(`${PREFIX}volume`)){
+    client.commands.get('volume').execute(message, args, queue)
   }
 
 })
