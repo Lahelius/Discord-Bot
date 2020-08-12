@@ -1,8 +1,10 @@
 const Discord = require('discord.js')
 const fs = require('fs')
+const {prefix, token} =nrequire(".config/json")
 const client = new Discord.Client()
 const ytdl =  require('ytdl-core')
-const PREFIX = '!'
+bot.commands = new Discord.Collection();
+//const PREFIX = '!'
 
 client.commands = new Discord.Collection()
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
@@ -29,4 +31,4 @@ client.on('message', async message => {
 
 })
 
-client.login('NzM5Mjk0NjUyNzEyMzUzODUz.XyYXzA.zsqi7psJGiAc1M4SY-M6plpfxeI');
+client.login(token);
