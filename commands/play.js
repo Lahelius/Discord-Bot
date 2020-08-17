@@ -2,7 +2,8 @@ const ytdl = require('ytdl-core')
 module.exports = {
   name: 'play',
   descrpition: "Loads and plays the song",
-  async execute(message, args, serverQueue, queue){
+  async execute(message, args, queue){
+    const serverQueue = queue.get(message.guild.id)
     const voiceChannel = message.member.voice.channel
     if(!voiceChannel) return message.channel.send("You need to be in a voice channel to play music")
     const permissions = voiceChannel.permissionsFor(message.client.user)
@@ -23,7 +24,7 @@ module.exports = {
         songs: [],
         volume: 5,
         playing: true,
-        loop: 'off'
+        loop: 'off',
       }
       queue.set(message.guild.id, queueConstruct)
       queueConstruct.songs.push(song)

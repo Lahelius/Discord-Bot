@@ -22,8 +22,10 @@ client.on('message', async message => {
   const args = message.content.substring(PREFIX.length).split(" ")
   const serverQueue = queue.get(message.guild.id)
 
-  if(message.content.startsWith(`${PREFIX}play`)){
-    client.commands.get('play').execute(message, args, serverQueue, queue)
+  if(message.content.startsWith(`${PREFIX}playlist`)){
+    client.commands.get('playlist').execute(message, args, queue, client)
+  } else if(message.content.startsWith(`${PREFIX}play`)){
+    client.commands.get('play').execute(message, args, queue)
   } else if (message.content.startsWith(`${PREFIX}leave`)){
     client.commands.get('leave').execute(message, args)
   } else if (message.content.startsWith(`${PREFIX}join`)) {
