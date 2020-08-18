@@ -1,5 +1,3 @@
-const { execute } = require("./resume");
-
 module.exports = {
     name: 'clear',
     description: 'Clears the song queue',
