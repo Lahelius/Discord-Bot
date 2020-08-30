@@ -13,7 +13,7 @@ for(const file of commandFiles){
   client.commands.set(command.name, command)
 }
 
-client.on('ready', () => console.log('G00nbot is ready'))
+client.on('ready', () => console.log('Bot is ready'))
 
 client.on('message', async message => {
   if(message.author.bot) return
