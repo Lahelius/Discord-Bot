@@ -1,17 +1,3 @@
-const Discord = require('discord.js')
-const fs = require('fs')
-const {PREFIX, token} = require('./config.json')
-const client = new Discord.Client()
-const ytdl =  require('ytdl-core')
-const queue = new Map()
-
-
-client.commands = new Discord.Collection()
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
-for(const file of commandFiles){
-  const command = require(`./commands/${file}`)
-  client.commands.set(command.name, command)
-}
 
 client.on('ready', () => console.log('Bot is ready'))
 
@@ -46,6 +32,8 @@ client.on('message', async message => {
     client.commands.get('clear').execute(message, queue)
   }else if (message.content.startsWith(`${PREFIX}queue`)){
     client.commands.get('queue').execute(message, queue)
+  }else if (message.content.startsWith(`${PREFIX}shuffle`)){
+    client.commands.get('shuffle').execute(message, args, queue, client)
   }
 })
 
