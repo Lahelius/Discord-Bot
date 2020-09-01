@@ -79,6 +79,7 @@ module.exports = {
 			if(err) console.log('Error writing file', err)
 			else {
 				console.log('Successfully wrote file') 
+				message.channel.send('Playlist was made!')
 			}
 		})
 		   
