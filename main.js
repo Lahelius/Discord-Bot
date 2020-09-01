@@ -1,3 +1,5 @@
+client.on('ready', () => console.log('Bot is ready'))
+
 client.on('message', async message => {
   if(message.author.bot) return
   if(!message.content.startsWith(PREFIX)) return
