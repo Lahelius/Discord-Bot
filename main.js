@@ -1,4 +1,3 @@
-
 client.on('ready', () => console.log('Bot is ready'))
 
 client.on('message', async message => {
@@ -10,6 +9,8 @@ client.on('message', async message => {
 
   if(message.content.startsWith(`${PREFIX}playlist`)){
     client.commands.get('playlist').execute(message, args, queue, client)
+  } else if(message.content.startsWith(`${PREFIX}help`)){
+    client.commands.get('help').execute(message)
   } else if(message.content.startsWith(`${PREFIX}play`)){
     client.commands.get('play').execute(message, args, queue)
   } else if (message.content.startsWith(`${PREFIX}leave`)){

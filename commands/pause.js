@@ -8,8 +8,7 @@ module.exports = {
         if(!serverQueue.playing) return message.channel.send("The current track is already paused")
         serverQueue.playing = false
         serverQueue.connection.dispatcher.pause()
-        message.channel.send('The music has been paused.')
+        message.channel.send('The track has been paused.')
         return undefined
     }
-
 }
