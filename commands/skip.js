@@ -5,6 +5,10 @@ module.exports = {
         const serverQueue = queue.get(message.guild.id);
         if(!message.member.voice.channel) return message.channel.send("You need to be in a voice channel im order for me to skip the current track")
         if(!serverQueue) return message.channel.send("The queue is empty at the moment.")
+        if(!serverQueue.playing){
+            serverQueue.playing = true
+            await serverQueue.connection.dispatcher.resume()
+        }
         serverQueue.connection.dispatcher.end();
         message.channel.send("The current song has been skipped")
         return undefined
