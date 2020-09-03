@@ -9,6 +9,6 @@ module.exports = {
         serverQueue.playing = false
         serverQueue.connection.dispatcher.pause()
         message.channel.send('The track has been paused.')
+        return undefined
     }
-    return undefined
 }
